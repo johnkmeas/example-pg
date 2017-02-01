@@ -1,14 +1,16 @@
+// Update with your config settings.
 const settings = require("./settings");
+
 module.exports = {
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database : settings.database,
       user : settings.user,
-      password : settings.password
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+      password : settings.password,
+      ssl: settings.ssl,
+      host: settings.hostname,
+      port: settings.port
     }
   }
 };

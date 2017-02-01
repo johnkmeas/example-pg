@@ -5,6 +5,11 @@ CREATE TABLE famous_people (
   birthdate DATE
 );
 
+-- CREATE TABLE milestones (
+--   description VARCHAR(255),
+--   birthdate DATE
+-- );
+
 -- Seed data
 INSERT INTO famous_people (first_name, last_name, birthdate)
   VALUES ('Abraham', 'Lincoln', '1809-02-12');
