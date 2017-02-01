@@ -1,8 +1,8 @@
-//var myArgs = process.argv.slice(2);
- var myArgs = process.argv[2];
-//console.log('myArgs: ', myArgs)
+const myArgs = process.argv[2];
 const pg = require("pg");
-const settings = require("./settings"); // settings.json
+const settings = require("./settings");
+
+//Connect to database with credentials
 const client = new pg.Client({
   user     : settings.user,
   password : settings.password,
@@ -12,6 +12,7 @@ const client = new pg.Client({
   ssl      : settings.ssl
 });
 
+//Output function
 function outputPerson(first, last, birthdate){
   console.log('Searching ...\n',
     'Found 1 person(s) by the name \''+
@@ -21,11 +22,12 @@ function outputPerson(first, last, birthdate){
   );
 }
 
+//Connect and query
 client.connect((err) => {
   if (err) {
     return console.error("Connection Error", err);
   }
-  client.query("SELECT * FROM famous_people WHERE last_name='" + myArgs+"'", (err, result) => {
+  client.query("SELECT * FROM famous_people WHERE last_name='" + myArgs + "'", (err, result) => {
     if (err) {
       return console.error("error running query", err);
     }
